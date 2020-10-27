@@ -142,9 +142,15 @@ function britishinterplanetarysociety_civicrm_buildForm($formName, &$form) {
       if (file_exists(E::path('js/contributionpage.js'))) {
         britishinterplanetarysociety_addScriptViaAssetBuilder('contributionpage.js', E::path('js/contributionpage.js'));
       }
+      if (file_exists(E::path('css/contributionpage.css'))) {
+        britishinterplanetarysociety_addStyleViaAssetBuilder('contributionpage.css', E::path('css/contributionpage.css'));
+      }
 
       if (file_exists(E::path("js/contribution{$form->_id}.js"))) {
         britishinterplanetarysociety_addScriptViaAssetBuilder("contribution{$form->_id}.js", E::path("js/contribution{$form->_id}.js"));
+      }
+      if (file_exists(E::path("css/contribution{$form->_id}.css"))) {
+        britishinterplanetarysociety_addStyleViaAssetBuilder("contribution{$form->_id}.css", E::path("css/contribution{$form->_id}.css"));
       }
       break;
   }
@@ -152,6 +158,21 @@ function britishinterplanetarysociety_civicrm_buildForm($formName, &$form) {
 
 function britishinterplanetarysociety_addScriptViaAssetBuilder($name, $path, $mimeType = 'application/javascript', $weight = 0, $region = 'page-footer') {
   \Civi::resources()->addScriptUrl(
+    \Civi::service('asset_builder')->getUrl(
+      $name,
+      [
+        'path' => $path,
+        'mimetype' => $mimeType,
+      ]
+    ),
+    // Load after any other scripts
+    $weight,
+    $region
+  );
+}
+
+function britishinterplanetarysociety_addStyleViaAssetBuilder($name, $path, $mimeType = 'text/css', $weight = 0, $region = 'page-footer') {
+  \Civi::resources()->addStyleUrl(
     \Civi::service('asset_builder')->getUrl(
       $name,
       [
