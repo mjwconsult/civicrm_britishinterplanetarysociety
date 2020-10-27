@@ -27,6 +27,9 @@
     $('#price_17').attr('disabled', false);
     $('#price_18').attr('disabled', true);
     $('#price_19').attr('disabled', true);
+
+    // Make sure that postage outside UK is not checked
+    $('input#price_20_57').prop('checked', false);
   });
 
   $('#price_17').on('change', function() {
@@ -60,6 +63,20 @@
       updateOptionsChoice3(selectedChoice1, selectedChoice2);
       $('#price_19').val('');
       $('#price_19').attr('disabled', false);
+    }
+  });
+
+  $('select#country-1').on('change', function() {
+    if ($('#country-1').val() === "") {
+      return;
+    }
+    if (parseInt($('#country-1').val()) !== 1226) {
+      // Make sure that postage outside UK is checked
+      $('input#price_20_57').prop('checked', true);
+    }
+    else {
+      // Make sure that postage outside UK is checked
+      $('input#price_20_57').prop('checked', false);
     }
   });
 

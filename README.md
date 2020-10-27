@@ -14,6 +14,7 @@ The extension is licensed under [AGPL-3.0](LICENSE.txt).
 ## Functionality
 
 * Add javascript to limit selections on "publication" choices on contribution page 1.
+* Select "Postage outside of UK" when a country other than "United Kingdom" is selected.
 
 ## Development / Tips
 
