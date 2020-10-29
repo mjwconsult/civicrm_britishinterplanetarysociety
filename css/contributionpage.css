@@ -1,3 +1,7 @@
 div.crm-container div#priceset {
   color: green;
 }
+/* This puts the input boxes to the left */
+div.crm-container div.content input {
+  margin: 0;
+}
