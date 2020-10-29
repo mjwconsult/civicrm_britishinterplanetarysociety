@@ -70,13 +70,22 @@
     if ($('#country-1').val() === "") {
       return;
     }
+    // This seems backwards, but we set it to the opposite of what we want and then "click" it.
+    // That changes it to the right state and recalculates the total amount.
     if (parseInt($('#country-1').val()) !== 1226) {
       // Make sure that postage outside UK is checked
-      $('input#price_20_57').prop('checked', true);
+      $('input#price_20_57').prop('checked', false).click();
+      if (typeof Swal === 'function') {
+        Swal.fire({
+          icon: 'info',
+          text: 'Postage outside of UK has been selected and the total amount has been recalculated to include the additional amount.',
+          title: 'Delivery outside UK'
+        });
+      }
     }
     else {
       // Make sure that postage outside UK is checked
-      $('input#price_20_57').prop('checked', false);
+      $('input#price_20_57').prop('checked', true).click();
     }
   });
 
