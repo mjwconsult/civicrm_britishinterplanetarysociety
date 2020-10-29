@@ -10,6 +10,7 @@ The extension is licensed under [AGPL-3.0](LICENSE.txt).
 * CiviCRM 5.28+
 * Mjwshared (https://lab.civicrm.org/extensions/mjwshared).
 * Minifier (recommended) (https://lab.civicrm.org/extensions/minifier).
+* Sweetalert (recommended) (https://lab.civicrm.org/extensions/sweetalert).
 
 ## Functionality
 
